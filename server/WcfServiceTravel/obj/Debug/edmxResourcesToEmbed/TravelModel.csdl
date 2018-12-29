@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updatedAt" Type="DateTime" Precision="3" />
+    <Property Name="postId" Type="Int32" />
+    <NavigationProperty Name="Post" Relationship="TravelModel.FK_Comment_Post" FromRole="Comment" ToRole="Post" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Traveler" Relationship="TravelModel.FK_Comment_Traveler" FromRole="Comment" ToRole="Traveler" />
+    <Property Name="Vote" Type="Int32" />
+    <NavigationProperty Name="Sub_Comment" Relationship="TravelModel.FK_Sub_Comment_Comment" FromRole="Comment" ToRole="Sub_Comment" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updatedAt" Type="DateTime" Precision="3" />
+    <Property Name="PostId" Type="Int32" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Image_Post" FromRole="Image" ToRole="Post" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Traveler" Relationship="TravelModel.FK_Image_Traveler" FromRole="Image" ToRole="Traveler" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updatedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Post" FromRole="Post" ToRole="Image" />
+    <NavigationProperty Name="Comments" Relationship="TravelModel.FK_Comment_Post" FromRole="Post" ToRole="Comment" />
+    <NavigationProperty Name="Post1" Relationship="TravelModel.FK_Post_Post" FromRole="Post" ToRole="Post1" />
+    <NavigationProperty Name="Post2" Relationship="TravelModel.FK_Post_Post" FromRole="Post1" ToRole="Post" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="Traveler" Relationship="TravelModel.FK_Post_Traveler" FromRole="Post" ToRole="Traveler" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="role_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Travelers" Relationship="TravelModel.FK_Traveler_Role" FromRole="Role" ToRole="Traveler" />
+  </EntityType>
+  <EntityType Name="Sub_Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sub_Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updateAt" Type="DateTime" Precision="3" />
+    <Property Name="CommentId" Type="Int32" />
+    <NavigationProperty Name="Comment" Relationship="TravelModel.FK_Sub_Comment_Comment" FromRole="Sub_Comment" ToRole="Comment" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tag_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag_Post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Traveler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="updatedAt" Type="DateTime" Precision="3" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="TravelModel.FK_Traveler_Role" FromRole="Traveler" ToRole="Role" />
+    <NavigationProperty Name="Comments" Relationship="TravelModel.FK_Comment_Traveler" FromRole="Traveler" ToRole="Comment" />
+    <NavigationProperty Name="Posts" Relationship="TravelModel.FK_Post_Traveler" FromRole="Traveler" ToRole="Post" />
+    <NavigationProperty Name="Images" Relationship="TravelModel.FK_Image_Traveler" FromRole="Traveler" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Vote">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="vote1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Image_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TravelEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Sub_Comment" EntityType="Self.Sub_Comment" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="Tag_Post" EntityType="Self.Tag_Post" />
+    <EntitySet Name="Travelers" EntityType="Self.Traveler" />
+    <EntitySet Name="Votes" EntityType="Self.Vote" />
+    <AssociationSet Name="FK_Image_Post" Association="Self.FK_Image_Post">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Traveler_Role" Association="TravelModel.FK_Traveler_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Traveler" EntitySet="Travelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Post" Association="TravelModel.FK_Comment_Post">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_Post" Association="TravelModel.FK_Post_Post">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Post1" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Traveler" Association="TravelModel.FK_Comment_Traveler">
+      <End Role="Traveler" EntitySet="Travelers" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_Traveler" Association="TravelModel.FK_Post_Traveler">
+      <End Role="Traveler" EntitySet="Travelers" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Traveler" Association="TravelModel.FK_Image_Traveler">
+      <End Role="Traveler" EntitySet="Travelers" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sub_Comment_Comment" Association="TravelModel.FK_Sub_Comment_Comment">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Sub_Comment" EntitySet="Sub_Comment" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Traveler_Role">
+    <End Type="TravelModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="TravelModel.Traveler" Role="Traveler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Traveler">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Post">
+    <End Type="TravelModel.Post" Role="Post" Multiplicity="0..1" />
+    <End Type="TravelModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="postId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_Post">
+    <End Type="TravelModel.Post" Role="Post" Multiplicity="1" />
+    <End Type="TravelModel.Post" Role="Post1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Post1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Traveler">
+    <End Type="TravelModel.Traveler" Role="Traveler" Multiplicity="0..1" />
+    <End Type="TravelModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Traveler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_Traveler">
+    <End Type="TravelModel.Traveler" Role="Traveler" Multiplicity="0..1" />
+    <End Type="TravelModel.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Traveler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Traveler">
+    <End Type="TravelModel.Traveler" Role="Traveler" Multiplicity="0..1" />
+    <End Type="TravelModel.Image" Role="Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Traveler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sub_Comment_Comment">
+    <End Type="TravelModel.Comment" Role="Comment" Multiplicity="0..1" />
+    <End Type="TravelModel.Sub_Comment" Role="Sub_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sub_Comment">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,12 @@
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\WcfServiceTravel.dll.config
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\WcfServiceTravel.dll
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\WcfServiceTravel.pdb
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\EntityFramework.dll
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\EntityFramework.SqlServer.dll
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\EntityFramework.xml
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\bin\EntityFramework.SqlServer.xml
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\obj\Debug\WcfServiceTravel.csprojAssemblyReference.cache
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\obj\Debug\WcfServiceTravel.csproj.CoreCompileInputs.cache
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\obj\Debug\WcfServiceTravel.csproj.CopyComplete
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\obj\Debug\WcfServiceTravel.dll
+C:\Users\Ad\source\repos\WcfServiceTravel\WcfServiceTravel\obj\Debug\WcfServiceTravel.pdb

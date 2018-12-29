@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+
+
+
+        .box {
+            border: 1px solid #dddfe2;
+            border-radius: 3px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            color: #1d2129;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+            width: 500px;
+        }
+
+        .boxin1 {
+            padding: 12px 12px 0;
+            display: block;
+            color: #1d2129;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+        }
+
+        .line1 {
+            color: #1d2129;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+            height: 43px;
+        }
+
+        .anhUser {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: aliceblue;
+            border: 0px solid #e9ebee;
+        }
+
+        .UserInfomation {
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+            color: #1d2129;
+        }
+
+        .UserName {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.38;
+            color: #0d54af;
+            direction: ltr;
+        }
+
+        .DateCreate {
+            color: #616770;
+            font-weight: normal;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+        }
+
+        .Noidung {
+            margin-top: 6px;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.38;
+            color: #1d2129;
+            direction: ltr;
+        }
+
+        .Anh {
+            height: auto;
+            min-height: initial;
+            width: 100%;
+        }
+
+        .Thongke {
+            color: #90949c;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+        }
+
+        .thongke1 {
+            color: #606770;
+            line-height: 20px;
+            direction: ltr;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .noidungthongke {
+            margin: 0 5px;
+        }
+
+        .Binhluan {
+            padding-bottom: 4px;
+            padding-top: 4px;
+            margin: 0 12px;
+        }
+
+        .Binhluan1 {
+            align-items: center;
+            display: flex;
+            height: 32px;
+            justify-content: center;
+            white-space: nowrap;
+            width: 100%;
+            font-weight: 600;
+            line-height: 14px;
+            color: #616770;
+            font-size: 13px;
+            padding: 0 2px;
+        }
+
+        .Noidungbinhluan {
+            border-top: 1px solid #eff0f1;
+            background-color: #fff;
+            color: #1d2129;
+            overflow: visible;
+            width: auto;
+            direction: ltr;
+            line-height: 1.34;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 8px;
+            border-radius: 0 0 2px 2px;
+            padding-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+
+        .ImgUser {
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            height: 32px;
+            width: 32px;
+            border: 0;
+        }
+
+        .Ghinoidung {
+            width: 360px;
+            height: 34px;
+            border-color: #ccd0d5;
+            background-color: #f2f3f5;
+            border-radius: 18px;
+            padding-left: 5px;
+            align-items: center;
+            border: 1px solid #dddfe2;
+            display: flex;
+            flex-wrap: wrap;
+            color: #1d2129;
+            word-break: break-word;
+        }
+
+        .Thongkebinhluan {
+        }
+
+        .TongBinhluan {
+            padding-bottom: 4px;
+            padding-top: 12px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .linktong {
+            color: #0d54af;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .NguoiBinhluan {
+            margin: 0;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 8px;
+            word-wrap: break-word;
+        }
+
+        .ImageClient {
+            width: 32px;
+            height: 32px;
+            display: block;
+            overflow: hidden;
+            border: 0;
+            border-radius: 50%;
+        }
+
+        .NoidungcommentClient {
+            display: block;
+            width: 380px;
+            height: auto;
+            background-color: #eff1f3;
+            border-radius: 18px;
+            display: block;
+            line-height: 16px;
+            padding: 8px 10px;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .client {
+            white-space: normal;
+            font-weight: 600;
+            color: #0d54af;
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+
+        .Author {
+            color: #0d54af;
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+
+        .NoidungClientComment {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            unicode-bidi: embed;
+            line-height: 1.34;
+            color: #1d2129;
+            word-wrap: break-word;
+        }
+
+        .tieude {
+            font-family: Georgia, serif;
+            letter-spacing: normal;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 22px;
+            margin: 14px 0 2px 0;
+            max-height: 44px;
+            overflow: hidden;
+            word-wrap: break-word;
+            direction: ltr;
+        }
+
+        .noidungchinh {
+            unicode-bidi: embed;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #90949c;
+            word-wrap: break-word;
+            font-size: 12px;
+            direction: ltr;
+            line-height: 1.34;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Search", "Traveller")</li>
+                    <li>@Html.ActionLink("Post", "Post", "Traveller")</li>
+                    <li>@Html.ActionLink("Registor", "Registor", "Traveller")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Traveller")</li>
+                    <li>@Html.ActionLink("LogOut", "Logout", "Traveller")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

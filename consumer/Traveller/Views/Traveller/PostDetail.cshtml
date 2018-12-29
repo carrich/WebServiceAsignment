@@ -1,0 +1,160 @@
+﻿@model Traveller.Models.PostDetail
+
+@{
+    ViewBag.Title = "PostDetail";
+    List<SelectListItem> ls = new List<SelectListItem>();
+    ls.Add(new SelectListItem() { Text = "1", Value = "1" });
+    ls.Add(new SelectListItem() { Text = "2", Value = "2" });
+    ls.Add(new SelectListItem() { Text = "3", Value = "3" });
+    ls.Add(new SelectListItem() { Text = "4", Value = "4" });
+    ls.Add(new SelectListItem() { Text = "5", Value = "5" });
+    ls.Add(new SelectListItem() { Text = "6", Value = "6" });
+    ls.Add(new SelectListItem() { Text = "7", Value = "7" });
+    ls.Add(new SelectListItem() { Text = "8", Value = "8" });
+    ls.Add(new SelectListItem() { Text = "9", Value = "9" });
+    ls.Add(new SelectListItem() { Text = "10", Value = "10" });
+}
+
+<h2>PostDetail</h2>
+
+<div class="box">
+    <div class="boxin1">
+        <div class="line1 row">
+            <div class="col-2">
+                <a href=""><img src="@Url.Content(Model.ImagePath)" alt="" class="anhUser"></a>
+            </div>
+            <div class="col-10 UserInfomation">
+                <h5 class="UserName">@Model.firstName @Model.lastName</h5>
+                <div class=""><span class="DateCreate">@Model.CreatedAt</span></div>
+            </div>
+        </div>
+        <div class="Noidung">
+            <div class="tieude">
+                <span>@Model.Title</span>
+            </div>
+            <div class="noidungchinh">@Model.Content</div>
+
+        </div>
+        @foreach (var item in ViewData["ImageList"] as IList<ImagePost>)
+        {
+            
+            <div>
+                <img src="@Url.Content(item.Path)" alt="" class="Anh" />
+            </div>
+        }
+
+        <div class="Thongke">
+            <div class="thongke1">
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3 ">10 người đã xem</div>
+                </div>
+            </div>
+            <div class="Binhluan">
+                <span class="Binhluan1">Bình luận</span>
+            </div>
+        </div>
+        <div class="Noidungbinhluan">
+            <div class="Thongkebinhluan">
+                <div class="TongBinhluan">
+                    <a href="" class="linktong">Xem thêm 3 bình luận khác</a>
+                </div>
+                @foreach (var item in ViewData["CommentList"] as IList<Traveller.Models.CommentDetail>)
+                {
+                   
+
+                    <div class="NguoiBinhluan">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="@Url.Content(item.ImagePath)" alt="" class="ImageClient">
+                            </div>
+                            <div class="col-11">
+                                <div class="NoidungcommentClient">
+                                    <span class="client">@item.firstName @item.lastName</span>
+                                    <span class="NoidungClientComment"> @item.comment1</span><br />
+                                    <span class="client">Mark: </span>
+                                    <span class="Author">@item.Mark</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    foreach (var subComment in item.SubComments)
+                    {
+                        <div>@subComment.Subcomment</div>
+                    }
+                }
+
+
+            </div>
+            @using (Html.BeginForm("PostComment", "Traveller", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <input type="hidden" value="@ViewBag.UserId" name="UserId" id="UserId" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      
+
+                        <div class="col-md-10">
+                            @Html.DropDownList("Vote", ls, "Select marks")
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                       
+
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-1/c14.0.48.48a/p48x48/10354686_10150004552801856_220367501106153455_n.jpg?_nc_cat=1&_nc_ht=scontent.fhan2-3.fna&oh=39b79f890b47f60880809269290ab2a8&oe=5C8FF0B6" alt="" class="ImgUser">
+                            </div>
+                            <div class="col-10">
+                                <div class="Ghinoidung">
+                                    <input type="text" name="comment1" id="comment1" style="border:none;background-color: #f2f3f5;" />
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <input type="hidden" value="@ViewBag.postId" name="postId" id="postId" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Comment" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<p>
+  
+    @Html.ActionLink("Back to List", "Search")
+</p>
